@@ -1,8 +1,8 @@
-package sample;
+package com.generation.brain.phonebook.controller;
 
 import javafx.event.ActionEvent;
 
-public class Controller {
+public class MainController {
 
     public void firstButtonAction (ActionEvent actionEvent) {
         System.out.println("First button!");
