@@ -1,40 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="420.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.generation.brain.phonebook.controller.MainController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="420.0" minWidth="320.0" prefHeight="420.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.generation.brain.phonebook.controller.MainController">
    <children>
-      <HBox prefHeight="61.0" prefWidth="315.0">
+      <AnchorPane prefHeight="50.0">
          <children>
-            <Button mnemonicParsing="false" text="Add">
-               <HBox.margin>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" text="Edit">
-               <HBox.margin>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" text="Remove">
-               <HBox.margin>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
-      <AnchorPane prefHeight="100.0">
-         <children>
-            <TextField layoutX="14.0" layoutY="17.0" prefWidth="190.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="90.0" />
-            <Button layoutX="248.0" layoutY="17.0" mnemonicParsing="false" text="Search" AnchorPane.rightAnchor="20.0" />
+            <Button layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#addButtonAction" text="Add" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0" />
+            <Button layoutX="72.0" layoutY="20.0" mnemonicParsing="false" onAction="#editButtonAction" text="Edit" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="20.0" />
+            <Button layoutX="131.0" layoutY="20.0" mnemonicParsing="false" onAction="#removeButtonAction" text="Remove" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="20.0" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane>
          <children>
-            <TableView prefHeight="200.0" prefWidth="303.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <TextField layoutX="22.0" layoutY="11.0" prefHeight="25.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="10.0" />
+            <Button layoutX="254.0" layoutY="11.0" mnemonicParsing="false" onAction="#searchButtonAction" text="Search" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="268.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TableView AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
               <columns>
                 <TableColumn prefWidth="53.0" text="Name" />
                 <TableColumn minWidth="0.0" prefWidth="71.0" text="Surname" />
@@ -47,14 +36,10 @@
             </TableView>
          </children>
       </AnchorPane>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <AnchorPane prefHeight="50.0">
          <children>
-            <Label prefHeight="50.0" text="Total contacts: ">
-               <HBox.margin>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </HBox.margin>
-            </Label>
+            <Label prefHeight="50.0" text="Total contacts: " AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
          </children>
-      </HBox>
+      </AnchorPane>
    </children>
 </VBox>
