@@ -13,10 +13,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class MainController {
 
+    // The instance of our address book.
     private CollectionAddressBook addressBook = new CollectionAddressBook();
 
     @FXML
@@ -40,6 +42,7 @@ public class MainController {
     @FXML
     private Label labelCount;
 
+
     // This method is executed once after loading the GUI.
     @FXML
     private void initialize() {
@@ -58,16 +61,42 @@ public class MainController {
             }
         });
 
+        // Remove after tests.
         addressBook.fillTestData();
+
+        // Filling the table in the GUI with data from the collection.
         tableAddressBook.setItems(addressBook.getPersonList());
-
-
     }
 
+    // Method for updating the number of contacts.
     private void updateCountLabel() {
         labelCount.setText("Total contacts: " + addressBook.getPersonList().size());
     }
 
+    // Buttons "Edit" and "Remove".
+    public void editAndRemoveButtonAction(ActionEvent actionEvent) {
+
+        // Getting object from the actionEvent.
+        Object source = actionEvent.getSource();
+
+        // If the button was not pressed, exit the method.
+        if (!(source instanceof Button)) {
+            return;
+        }
+
+        Button clickedButton = (Button) source;
+        Person selectedPerson = (Person) tableAddressBook.getSelectionModel().getSelectedItem();
+
+        switch (clickedButton.getId()) {
+            case "btnEdit":
+                System.out.println("Editing " + selectedPerson.getName());
+                break;
+            case "btnRemove":
+                System.out.println("Removing " + selectedPerson.getName());
+        }
+    }
+
+    // The add button was pressed.
     public void addButtonAction (ActionEvent actionEvent) throws IOException {
 
         Stage stage = new Stage();
@@ -83,16 +112,29 @@ public class MainController {
 
     }
 
-    public void editButtonAction (ActionEvent actionEvent) {
-
-    }
-
-    public void removeButtonAction (ActionEvent actionEvent) {
-
-    }
-
     public void searchButtonAction (ActionEvent actionEvent) {
 
     }
 
+    public void infoActionButton(ActionEvent actionEvent) throws IOException {
+
+        // Getting object from the actionEvent.
+        Object source = actionEvent.getSource();
+
+        Person selectedPerson = (Person) tableAddressBook.getSelectionModel().getSelectedItem();
+
+        // If the button was not pressed, or if the person was not chosen, exit the method.
+        if (!(source instanceof Button) | selectedPerson == null) {
+            return;
+        }
+
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../view/info.fxml"));
+        stage.setTitle("Information about " + selectedPerson.getName());
+        stage.setMinWidth(600);
+        stage.setMinHeight(270);
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }
