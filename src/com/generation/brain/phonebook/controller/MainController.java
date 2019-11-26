@@ -24,6 +24,8 @@ public class MainController {
     @FXML
     private Button btnAdd;
     @FXML
+    private Button btnInfo;
+    @FXML
     private Button btnEdit;
     @FXML
     private Button btnRemove;
@@ -47,6 +49,9 @@ public class MainController {
     @FXML
     private void initialize() {
 
+        // This will allow to select more than one person in the tableAddressBook:
+        // tableAddressBook.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         // Automatically reading from the Person class of the getter, which corresponds to the variable name we specified,
         // writing the obtained value to the corresponding column of the table.
         columnName.setCellValueFactory(new PropertyValueFactory<Person, String>("name"));
@@ -54,12 +59,7 @@ public class MainController {
         columnPhoneNumber.setCellValueFactory(new PropertyValueFactory<Person, String>("phoneNumber"));
 
         // Adding a listener, that automatically updates the counter, if the list is updated.
-        addressBook.getPersonList().addListener(new ListChangeListener<Person>() {
-            @Override
-            public void onChanged(Change<? extends Person> change) {
-                updateCountLabel();
-            }
-        });
+        addressBook.getPersonList().addListener((ListChangeListener<Person>) change -> updateCountLabel());
 
         // Remove after tests.
         addressBook.fillTestData();
@@ -73,30 +73,35 @@ public class MainController {
         labelCount.setText("Total contacts: " + addressBook.getPersonList().size());
     }
 
+
+    //----------------------------
+
+
     // Buttons "Edit" and "Remove".
     public void editAndRemoveButtonAction(ActionEvent actionEvent) {
 
         // Getting object from the actionEvent.
         Object source = actionEvent.getSource();
+        // Getting chosen person.
+        Person selectedPerson = (Person) tableAddressBook.getSelectionModel().getSelectedItem();
+        // Getting the clicked button.
+        Button clickedButton = (Button) source;
 
-        // If the button was not pressed, exit the method.
-        if (!(source instanceof Button)) {
+        // If the button was not pressed, or if the person was not chosen, exit the method.
+        if (source == null || selectedPerson == null) {
             return;
         }
-
-        Button clickedButton = (Button) source;
-        Person selectedPerson = (Person) tableAddressBook.getSelectionModel().getSelectedItem();
 
         switch (clickedButton.getId()) {
             case "btnEdit":
                 System.out.println("Editing " + selectedPerson.getName());
                 break;
             case "btnRemove":
-                System.out.println("Removing " + selectedPerson.getName());
+                addressBook.delete(selectedPerson);
         }
     }
 
-    // The add button was pressed.
+    // The "Add" button was pressed.
     public void addButtonAction (ActionEvent actionEvent) throws IOException {
 
         Stage stage = new Stage();
@@ -116,11 +121,12 @@ public class MainController {
 
     }
 
+    // The "Info" button was pressed.
     public void infoActionButton(ActionEvent actionEvent) throws IOException {
 
         // Getting object from the actionEvent.
         Object source = actionEvent.getSource();
-
+        // Getting chosen person.
         Person selectedPerson = (Person) tableAddressBook.getSelectionModel().getSelectedItem();
 
         // If the button was not pressed, or if the person was not chosen, exit the method.
@@ -133,7 +139,7 @@ public class MainController {
         stage.setTitle("Information about " + selectedPerson.getName());
         stage.setMinWidth(600);
         stage.setMinHeight(270);
-        stage.setResizable(false);
+//        stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.show();
     }

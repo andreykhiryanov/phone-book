@@ -85,12 +85,12 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Button fx:id="btnAdd" mnemonicParsing="false" prefWidth="52.0" text="Add">
+            <Button fx:id="btnAdd" defaultButton="true" mnemonicParsing="false" onAction="#addButtonAction" prefWidth="52.0" text="Add">
                <VBox.margin>
                   <Insets bottom="10.0" left="15.0" top="90.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnCancel" mnemonicParsing="false" text="Cancel">
+            <Button fx:id="btnCancel" cancelButton="true" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancel">
                <VBox.margin>
                   <Insets left="15.0" top="10.0" />
                </VBox.margin>

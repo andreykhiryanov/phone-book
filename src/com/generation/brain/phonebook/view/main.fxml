@@ -38,7 +38,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="50.0">
          <children>
-            <Label fx:id="labelCount" prefHeight="50.0" text="Total contacts: " AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Label fx:id="labelCount" prefHeight="50.0" text="Total contacts: " AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
    </children>
