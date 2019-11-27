@@ -6,7 +6,6 @@ import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -17,9 +16,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainController {
-
-    // The instance of our address book.
-    private CollectionPhoneBook phoneBook = new CollectionPhoneBook();
 
     @FXML
     private Button btnAdd;
@@ -44,9 +40,22 @@ public class MainController {
     @FXML
     private Label labelCount;
 
+    // The instance of our address book.
+    private CollectionPhoneBook phoneBook = new CollectionPhoneBook();
+
+    // Linking to the main stage.
+    private Stage mainStage;
+    public void setMainStage(Stage mainStage) {
+        this.mainStage = mainStage;
+    }
+
+    // Getting access to the editor from more than one method.
+    private Stage editorStage;
+    private EditController editController;
+
     // This method is executed once after loading the GUI.
     @FXML
-    private void initialize() {
+    private void initialize() throws IOException {
 
         // This will allow to select more than one person in the tablePhoneBook:
         // tablePhoneBook.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -65,6 +74,26 @@ public class MainController {
 
         // Filling the table in the GUI with data from the collection.
         tablePhoneBook.setItems(phoneBook.getPersonList());
+
+        // Initializing the editor window and its controller.
+        initEditor();
+    }
+
+    private void initEditor() throws IOException {
+
+        editorStage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("../view/edit.fxml"));
+        Parent fxmlAdd = fxmlLoader.load();
+        editController = fxmlLoader.getController();
+
+        editorStage.setTitle("Contact Editor");
+        editorStage.setMinWidth(600);
+        editorStage.setMinHeight(270);
+        editorStage.setResizable(false);
+        editorStage.setScene(new Scene(fxmlAdd));
+        editorStage.initModality(Modality.WINDOW_MODAL);
+        editorStage.initOwner(mainStage);
     }
 
     // Method for updating the number of contacts.
@@ -76,8 +105,8 @@ public class MainController {
     //----------------------------
 
 
-    // Buttons "Edit" and "Remove".
-    public void editAndRemoveButtonAction(ActionEvent actionEvent) {
+    // Buttons "Edit", "Info" and "Remove".
+    public void threeButtonAction(ActionEvent actionEvent) throws IOException {
 
         // Getting object from the actionEvent.
         Object source = actionEvent.getSource();
@@ -92,64 +121,60 @@ public class MainController {
         }
 
         switch (clickedButton.getId()) {
+            case "btnInfo":
+                System.out.println("Info about " + selectedPerson.getName());
+                break;
             case "btnEdit":
-                System.out.println("Editing " + selectedPerson.getName());
+                editController.setPerson(selectedPerson);
+                editorStage.showAndWait();
+                editController.resetFields();
+                tablePhoneBook.refresh();
                 break;
             case "btnRemove":
                 phoneBook.delete(selectedPerson);
+                tablePhoneBook.refresh();
+                break;
         }
     }
 
     // The "Add" button was pressed.
     public void addButtonAction (ActionEvent actionEvent) throws IOException {
 
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("../view/add.fxml"));
-        Parent fxmlAdd = fxmlLoader.load();
-        AddController addController = fxmlLoader.getController();
-
-        stage.setTitle("New Contact");
-        stage.setMinWidth(600);
-        stage.setMinHeight(270);
-        stage.setResizable(false);
-        stage.setScene(new Scene(fxmlAdd));
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-
         // Waits until the user enters data.
-        stage.showAndWait();
+        editorStage.showAndWait();
 
         // If user clicked cancel, the method getPerson() will return null.
-        if (addController.getPerson() != null) {
-            phoneBook.add(addController.getPerson());
+        if (editController.getPerson() != null) {
+            phoneBook.add(editController.getPerson());
+            editController.resetFields();
+            tablePhoneBook.refresh();
         }
+
     }
 
     public void searchButtonAction (ActionEvent actionEvent) {
 
     }
 
-    // The "Info" button was pressed.
-    public void infoActionButton(ActionEvent actionEvent) throws IOException {
-
-        // Getting object from the actionEvent.
-        Object source = actionEvent.getSource();
-        // Getting chosen person.
-        Person selectedPerson = (Person) tablePhoneBook.getSelectionModel().getSelectedItem();
-
-        // If the button was not pressed, or if the person was not chosen, exit the method.
-        if (!(source instanceof Button) | selectedPerson == null) {
-            return;
-        }
-
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../view/info.fxml"));
-        stage.setTitle("Information about " + selectedPerson.getName());
-        stage.setMinWidth(600);
-        stage.setMinHeight(270);
-//        stage.setResizable(false);
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
+//    public void infoActionButton(ActionEvent actionEvent) throws IOException {
+//
+//        // Getting object from the actionEvent.
+//        Object source = actionEvent.getSource();
+//        // Getting chosen person.
+//        Person selectedPerson = (Person) tablePhoneBook.getSelectionModel().getSelectedItem();
+//
+//        // If the button was not pressed, or if the person was not chosen, exit the method.
+//        if (!(source instanceof Button) | selectedPerson == null) {
+//            return;
+//        }
+//
+//        Stage stage = new Stage();
+//        Parent root = FXMLLoader.load(getClass().getResource("../view/info.fxml"));
+//        stage.setTitle("Information about " + selectedPerson.getName());
+//        stage.setMinWidth(600);
+//        stage.setMinHeight(270);
+////        stage.setResizable(false);
+//        stage.setScene(new Scene(root));
+//        stage.show();
+//    }
 }

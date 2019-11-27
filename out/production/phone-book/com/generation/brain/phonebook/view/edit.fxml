@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.generation.brain.phonebook.controller.AddController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.generation.brain.phonebook.controller.EditController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
@@ -85,7 +85,7 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Button fx:id="btnAdd" defaultButton="true" mnemonicParsing="false" onAction="#addButtonAction" prefWidth="52.0" text="Add">
+            <Button fx:id="btnOk" defaultButton="true" mnemonicParsing="false" onAction="#okButtonAction" prefWidth="52.0" text="ОК">
                <VBox.margin>
                   <Insets bottom="10.0" left="15.0" top="90.0" />
                </VBox.margin>

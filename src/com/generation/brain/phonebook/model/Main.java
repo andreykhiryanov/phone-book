@@ -1,5 +1,6 @@
 package com.generation.brain.phonebook.model;
 
+import com.generation.brain.phonebook.controller.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,12 +12,17 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("../view/main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("../view/main.fxml"));
+        Parent fxmlMain = fxmlLoader.load();
+        MainController mainController = fxmlLoader.getController();
+        mainController.setMainStage(primaryStage);
+
         primaryStage.setTitle("Phone Book");
         primaryStage.setMinHeight(420);
         primaryStage.setMinWidth(320);
 //        primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(root, 320, 420));
+        primaryStage.setScene(new Scene(fxmlMain, 320, 420));
         primaryStage.show();
 
     }
