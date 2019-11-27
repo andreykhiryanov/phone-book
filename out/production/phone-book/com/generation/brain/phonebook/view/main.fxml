@@ -24,7 +24,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="268.0" VBox.vgrow="ALWAYS">
          <children>
-            <TableView fx:id="tableAddressBook" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <TableView fx:id="tablePhoneBook" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
               <columns>
                 <TableColumn fx:id="columnName" prefWidth="53.0" text="Name" />
                 <TableColumn fx:id="columnSurname" minWidth="0.0" prefWidth="71.0" text="Surname" />

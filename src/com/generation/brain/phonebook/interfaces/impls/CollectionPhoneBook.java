@@ -1,11 +1,11 @@
 package com.generation.brain.phonebook.interfaces.impls;
 
-import com.generation.brain.phonebook.interfaces.AddressBook;
+import com.generation.brain.phonebook.interfaces.PhoneBook;
 import com.generation.brain.phonebook.objects.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class CollectionAddressBook implements AddressBook {
+public class CollectionPhoneBook implements PhoneBook {
 
     private ObservableList<Person> personList = FXCollections.observableArrayList();
 

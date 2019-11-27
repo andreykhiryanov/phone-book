@@ -2,7 +2,7 @@ package com.generation.brain.phonebook.interfaces;
 
 import com.generation.brain.phonebook.objects.Person;
 
-public interface AddressBook {
+public interface PhoneBook {
 
     void add (Person person);
 

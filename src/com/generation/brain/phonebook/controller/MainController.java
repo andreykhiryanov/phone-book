@@ -1,6 +1,6 @@
 package com.generation.brain.phonebook.controller;
 
-import com.generation.brain.phonebook.interfaces.impls.CollectionAddressBook;
+import com.generation.brain.phonebook.interfaces.impls.CollectionPhoneBook;
 import com.generation.brain.phonebook.objects.Person;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
@@ -19,7 +19,7 @@ import java.io.IOException;
 public class MainController {
 
     // The instance of our address book.
-    private CollectionAddressBook addressBook = new CollectionAddressBook();
+    private CollectionPhoneBook phoneBook = new CollectionPhoneBook();
 
     @FXML
     private Button btnAdd;
@@ -34,7 +34,7 @@ public class MainController {
     @FXML
     private TextField txtSearch;
     @FXML
-    private TableView tableAddressBook;
+    private TableView tablePhoneBook;
     @FXML
     private TableColumn<Person, String> columnName;
     @FXML
@@ -44,13 +44,12 @@ public class MainController {
     @FXML
     private Label labelCount;
 
-
     // This method is executed once after loading the GUI.
     @FXML
     private void initialize() {
 
-        // This will allow to select more than one person in the tableAddressBook:
-        // tableAddressBook.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        // This will allow to select more than one person in the tablePhoneBook:
+        // tablePhoneBook.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         // Automatically reading from the Person class of the getter, which corresponds to the variable name we specified,
         // writing the obtained value to the corresponding column of the table.
@@ -59,18 +58,18 @@ public class MainController {
         columnPhoneNumber.setCellValueFactory(new PropertyValueFactory<Person, String>("phoneNumber"));
 
         // Adding a listener, that automatically updates the counter, if the list is updated.
-        addressBook.getPersonList().addListener((ListChangeListener<Person>) change -> updateCountLabel());
+        phoneBook.getPersonList().addListener((ListChangeListener<Person>) change -> updateCountLabel());
 
         // Remove after tests.
-        addressBook.fillTestData();
+        phoneBook.fillTestData();
 
         // Filling the table in the GUI with data from the collection.
-        tableAddressBook.setItems(addressBook.getPersonList());
+        tablePhoneBook.setItems(phoneBook.getPersonList());
     }
 
     // Method for updating the number of contacts.
     private void updateCountLabel() {
-        labelCount.setText("Total contacts: " + addressBook.getPersonList().size());
+        labelCount.setText("Total contacts: " + phoneBook.getPersonList().size());
     }
 
 
@@ -83,7 +82,7 @@ public class MainController {
         // Getting object from the actionEvent.
         Object source = actionEvent.getSource();
         // Getting chosen person.
-        Person selectedPerson = (Person) tableAddressBook.getSelectionModel().getSelectedItem();
+        Person selectedPerson = (Person) tablePhoneBook.getSelectionModel().getSelectedItem();
         // Getting the clicked button.
         Button clickedButton = (Button) source;
 
@@ -97,7 +96,7 @@ public class MainController {
                 System.out.println("Editing " + selectedPerson.getName());
                 break;
             case "btnRemove":
-                addressBook.delete(selectedPerson);
+                phoneBook.delete(selectedPerson);
         }
     }
 
@@ -105,16 +104,26 @@ public class MainController {
     public void addButtonAction (ActionEvent actionEvent) throws IOException {
 
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../view/add.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("../view/add.fxml"));
+        Parent fxmlAdd = fxmlLoader.load();
+        AddController addController = fxmlLoader.getController();
+
         stage.setTitle("New Contact");
         stage.setMinWidth(600);
         stage.setMinHeight(270);
         stage.setResizable(false);
-        stage.setScene(new Scene(root));
+        stage.setScene(new Scene(fxmlAdd));
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-        stage.show();
 
+        // Waits until the user enters data.
+        stage.showAndWait();
+
+        // If user clicked cancel, the method getPerson() will return null.
+        if (addController.getPerson() != null) {
+            phoneBook.add(addController.getPerson());
+        }
     }
 
     public void searchButtonAction (ActionEvent actionEvent) {
@@ -127,7 +136,7 @@ public class MainController {
         // Getting object from the actionEvent.
         Object source = actionEvent.getSource();
         // Getting chosen person.
-        Person selectedPerson = (Person) tableAddressBook.getSelectionModel().getSelectedItem();
+        Person selectedPerson = (Person) tablePhoneBook.getSelectionModel().getSelectedItem();
 
         // If the button was not pressed, or if the person was not chosen, exit the method.
         if (!(source instanceof Button) | selectedPerson == null) {
