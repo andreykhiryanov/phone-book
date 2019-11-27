@@ -16,7 +16,6 @@ public class CollectionPhoneBook implements PhoneBook {
 
     @Override
     public void edit(Person person) {
-
     }
 
     @Override
@@ -31,13 +30,13 @@ public class CollectionPhoneBook implements PhoneBook {
     //----------------------------
 
     public void fillTestData(){
-        personList.add(new Person("Vasya", "Vaskin", "123"));
-        personList.add(new Person("Petya", "Petkin", "456"));
-        personList.add(new Person("Dasha", "Dashkina", "789"));
-        personList.add(new Person("Glasha", "Glashkina", "987"));
-        personList.add(new Person("Juchka", "Juchkina", "654"));
-        personList.add(new Person("Vnuchka", "Vnuchkina", "321"));
-        personList.add(new Person("Dedka", "Repkin", "666"));
+        personList.add(new Person("Frederick", "Sanger", "(608) 781-2970"));
+        personList.add(new Person("Lekisha", "Blythe", "(608) 882-4143"));
+        personList.add(new Person("Arnita", "Mathew", "(479) 936-9910"));
+        personList.add(new Person("Charlene", "Quam", "(612) 529-1800"));
+        personList.add(new Person("Wilhelmina", "Demeo", "(208) 756-6935"));
+        personList.add(new Person("Belkis", "Ritchey", "(814) 695-5400"));
+        personList.add(new Person("Alexandria", "Grimmett", "(802) 447-3854"));
     }
 
 }

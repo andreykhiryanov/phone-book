@@ -16,12 +16,11 @@ public class Main extends Application {
         fxmlLoader.setLocation(getClass().getResource("../view/main.fxml"));
         Parent fxmlMain = fxmlLoader.load();
         MainController mainController = fxmlLoader.getController();
-        mainController.setMainStage(primaryStage);
+        mainController.setPrimaryStage(primaryStage);
 
         primaryStage.setTitle("Phone Book");
         primaryStage.setMinHeight(420);
         primaryStage.setMinWidth(320);
-//        primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(fxmlMain, 320, 420));
         primaryStage.show();
 
