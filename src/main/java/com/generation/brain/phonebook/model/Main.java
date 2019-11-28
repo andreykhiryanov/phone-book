@@ -19,8 +19,8 @@ public class Main extends Application {
         mainController.setPrimaryStage(primaryStage);
 
         primaryStage.setTitle("Phone Book");
-        primaryStage.setMinHeight(420);
-        primaryStage.setMinWidth(320);
+        primaryStage.setMinHeight(435);
+        primaryStage.setMinWidth(335);
         primaryStage.setScene(new Scene(fxmlMain, 320, 420));
         primaryStage.show();
 

@@ -2,7 +2,9 @@ package com.generation.brain.phonebook.controller;
 
 import com.generation.brain.phonebook.objects.CollectionPhoneBook;
 import com.generation.brain.phonebook.objects.Person;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,6 +30,8 @@ public class MainController {
     @FXML
     private Button btnRemove;
     @FXML
+    private Button btnClear;
+    @FXML
     private Button btnSearch;
     @FXML
     private TextField txtSearch;
@@ -44,6 +48,11 @@ public class MainController {
 
     // The instance of our address book.
     private CollectionPhoneBook phoneBook = new CollectionPhoneBook();
+
+    // Creating the backup list of our phoneBook.
+    // It is necessary for temporary storage of the list of people at the time of the search.
+    // After the search, we can get a complete list of people from it.
+    private ObservableList<Person> backupList = FXCollections.observableArrayList();
 
     // Linking to the main stage.
     private Stage primaryStage;
@@ -74,7 +83,7 @@ public class MainController {
         // Remove after tests.
         phoneBook.fillTestData();
 
-        // Filling the table in the GUI with data from the collection.
+        // Filling up the table in the GUI with data from the collection.
         tablePhoneBook.setItems(phoneBook.getPersonList());
 
         // Double click handler.
@@ -123,6 +132,8 @@ public class MainController {
     // The "Add" button.
     public void addButtonAction (ActionEvent actionEvent) throws IOException {
 
+        clearButtonAction(actionEvent);
+
         // Waits until the user enters data.
         editorStage.showAndWait();
 
@@ -162,15 +173,42 @@ public class MainController {
                 break;
             case "btnRemove":
                 phoneBook.delete(selectedPerson);
+                backupList.remove(selectedPerson);
                 tablePhoneBook.refresh();
                 break;
         }
     }
 
+    // The "Search" button.
     public void searchButtonAction (ActionEvent actionEvent) {
+
+        if (!txtSearch.getText().equals("") & backupList.isEmpty()) {
+            // Moving all people from the main list to the backup.
+            backupList.addAll(phoneBook.getPersonList());
+            phoneBook.getPersonList().clear();
+
+            for (Person person : backupList) {
+                if ((person.getName().toLowerCase().contains(txtSearch.getText().toLowerCase()) ||
+                        person.getPhoneNumber().toLowerCase().contains(txtSearch.getText().toLowerCase()) ||
+                        person.getSurname().toLowerCase().contains(txtSearch.getText().toLowerCase())) & !phoneBook.getPersonList().contains(person)) {
+                    phoneBook.getPersonList().add(person);
+                }
+            }
+        }
+    }
+
+    public void clearButtonAction(ActionEvent actionEvent) {
+
+        if (!txtSearch.getText().equals("")) {
+            txtSearch.clear();
+            phoneBook.getPersonList().clear();
+            phoneBook.getPersonList().addAll(backupList);
+            backupList.clear();
+        }
 
     }
 
+    // Displays information about person.
     private void showInfo(Person selectedPerson) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -186,6 +224,7 @@ public class MainController {
         infoStage.show();
     }
 
+    // Requests confirmation.
     private boolean confirm() throws IOException {
 
         Stage stage = new Stage();
@@ -201,5 +240,4 @@ public class MainController {
 
         return false;
     }
-
 }

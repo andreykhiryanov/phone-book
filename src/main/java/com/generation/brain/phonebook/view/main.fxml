@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.textfield.CustomTextField?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="420.0" minWidth="320.0" prefHeight="420.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.generation.brain.phonebook.controller.MainController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="420.0" minWidth="320.0" prefHeight="420.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.generation.brain.phonebook.controller.MainController">
    <children>
       <AnchorPane prefHeight="50.0">
          <children>
-            <Button fx:id="btnAdd" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#addButtonAction" prefWidth="59.0" text="Add" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0" />
-            <Button fx:id="btnInfo" layoutX="212.0" layoutY="20.0" mnemonicParsing="false" onAction="#threeButtonAction" prefWidth="59.0" text="Info" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="20.0" />
-            <Button fx:id="btnEdit" layoutX="72.0" layoutY="20.0" mnemonicParsing="false" onAction="#threeButtonAction" prefWidth="59.0" text="Edit" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="20.0" />
-            <Button fx:id="btnRemove" layoutX="131.0" layoutY="20.0" mnemonicParsing="false" onAction="#threeButtonAction" text="Remove" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="btnAdd" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#addButtonAction" prefWidth="60.0" text="Add" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="btnInfo" layoutX="93.0" layoutY="20.0" mnemonicParsing="false" onAction="#threeButtonAction" prefWidth="60.0" text="Info" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="btnEdit" layoutX="174.0" layoutY="20.0" mnemonicParsing="false" onAction="#threeButtonAction" prefWidth="60.0" text="Edit" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="btnRemove" layoutX="131.0" layoutY="20.0" mnemonicParsing="false" onAction="#threeButtonAction" prefWidth="60.0" text="Remove" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="20.0" />
          </children>
       </AnchorPane>
       <AnchorPane>
          <children>
-            <TextField fx:id="txtSearch" layoutX="22.0" layoutY="11.0" prefHeight="25.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="0.0" />
-            <Button fx:id="btnSearch" layoutX="254.0" layoutY="11.0" mnemonicParsing="false" onAction="#searchButtonAction" text="Search" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="btnSearch" layoutX="254.0" layoutY="11.0" mnemonicParsing="false" onAction="#searchButtonAction" prefWidth="52.0" text="Search" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="0.0" />
+            <CustomTextField fx:id="txtSearch" layoutX="37.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="btnClear" mnemonicParsing="false" onAction="#clearButtonAction" prefWidth="52.0" text="Clear" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="268.0" VBox.vgrow="ALWAYS">
