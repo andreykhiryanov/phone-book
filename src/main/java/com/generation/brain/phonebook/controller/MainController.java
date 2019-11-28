@@ -171,7 +171,7 @@ public class MainController {
 
     }
 
-    public void showInfo(Person selectedPerson) throws IOException {
+    private void showInfo(Person selectedPerson) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("../view/info.fxml"));
@@ -186,7 +186,7 @@ public class MainController {
         infoStage.show();
     }
 
-    public boolean confirm() throws IOException {
+    private boolean confirm() throws IOException {
 
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/confirm.fxml"));
