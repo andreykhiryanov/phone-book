@@ -172,9 +172,11 @@ public class MainController {
                 tablePhoneBook.refresh();
                 break;
             case "btnRemove":
+                if (confirm()) {
                 phoneBook.delete(selectedPerson);
                 backupList.remove(selectedPerson);
                 tablePhoneBook.refresh();
+                }
                 break;
         }
     }
@@ -225,19 +227,23 @@ public class MainController {
     }
 
     // Requests confirmation.
-    private boolean confirm() throws IOException {
+    public boolean confirm() throws IOException {
 
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/confirm.fxml"));
-        stage.setTitle("Delete Contact");
-        stage.setResizable(false);
-        stage.setScene(new Scene(root));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("../view/confirm.fxml"));
+        Parent fxmlConfirm = fxmlLoader.load();
+        ConfirmController confirmController = fxmlLoader.getController();
 
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(primaryStage);
+        Stage confirmStage = new Stage();
+        confirmStage.setTitle("Delete Contact");
+        confirmStage.setResizable(false);
+        confirmStage.setScene(new Scene(fxmlConfirm));
 
-        stage.show();
+        confirmStage.initModality(Modality.APPLICATION_MODAL);
+        confirmStage.initOwner(primaryStage);
 
-        return false;
+        confirmStage.showAndWait();
+
+        return confirmController.getConfirm();
     }
 }
