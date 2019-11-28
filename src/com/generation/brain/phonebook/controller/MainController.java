@@ -1,6 +1,6 @@
 package com.generation.brain.phonebook.controller;
 
-import com.generation.brain.phonebook.interfaces.impls.CollectionPhoneBook;
+import com.generation.brain.phonebook.objects.CollectionPhoneBook;
 import com.generation.brain.phonebook.objects.Person;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
@@ -53,7 +53,7 @@ public class MainController {
 
     // Getting access to the editor from more than one method.
     private Stage editorStage;
-    private EditController editController;
+    private EditController editorController;
 
     // This method is executed once after loading the GUI.
     @FXML
@@ -103,14 +103,12 @@ public class MainController {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("../view/edit.fxml"));
         Parent fxmlEdit = fxmlLoader.load();
-        editController = fxmlLoader.getController();
+        editorController = fxmlLoader.getController();
 
         editorStage.setTitle("Contact Editor");
-        editorStage.setMinWidth(600);
-        editorStage.setMinHeight(270);
         editorStage.setResizable(false);
         editorStage.setScene(new Scene(fxmlEdit));
-        editorStage.initModality(Modality.WINDOW_MODAL);
+        editorStage.initModality(Modality.APPLICATION_MODAL);
         editorStage.initOwner(primaryStage);
     }
 
@@ -129,9 +127,9 @@ public class MainController {
         editorStage.showAndWait();
 
         // If user clicked cancel, the method getPerson() will return null.
-        if (editController.getPerson() != null) {
-            phoneBook.add(editController.getPerson());
-            editController.resetFields();
+        if (editorController.getPerson() != null) {
+            phoneBook.add(editorController.getPerson());
+            editorController.resetFields();
             tablePhoneBook.refresh();
         }
 
@@ -157,9 +155,9 @@ public class MainController {
                 showInfo(selectedPerson);
                 break;
             case "btnEdit":
-                editController.setPerson(selectedPerson);
+                editorController.setPerson(selectedPerson);
                 editorStage.showAndWait();
-                editController.resetFields();
+                editorController.resetFields();
                 tablePhoneBook.refresh();
                 break;
             case "btnRemove":
@@ -183,10 +181,25 @@ public class MainController {
 
         Stage infoStage = new Stage();
         infoStage.setTitle("Information about " + selectedPerson.getName());
-        infoStage.setMinWidth(500);
-        infoStage.setMinHeight(270);
         infoStage.setResizable(false);
         infoStage.setScene(new Scene(fxmlInfo));
         infoStage.show();
     }
+
+    public boolean confirm() throws IOException {
+
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/confirm.fxml"));
+        stage.setTitle("Delete Contact");
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(primaryStage);
+
+        stage.show();
+
+        return false;
+    }
+
 }

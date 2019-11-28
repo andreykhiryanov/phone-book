@@ -1,7 +1,6 @@
-package com.generation.brain.phonebook.interfaces.impls;
+package com.generation.brain.phonebook.objects;
 
 import com.generation.brain.phonebook.interfaces.PhoneBook;
-import com.generation.brain.phonebook.objects.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
