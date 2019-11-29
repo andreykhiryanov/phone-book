@@ -2,8 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/ConfirmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/ConfirmController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/view/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/view/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/controller/ConfirmController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/controller/EditController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/controller/InfoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/controller/MainController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/controller/MainController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/interfaces/PhoneBook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/model/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/objects/CollectionPhoneBook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/objects/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/view/confirm.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/view/edit.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/view/info.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/generation/brain/phonebook/view/main.fxml" beforeDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,20 +104,20 @@
     <session id="656554615">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="23" />
-          <entry key="project.open.time.0" value="16" />
+          <entry key="project.closed" value="25" />
+          <entry key="project.open.time.0" value="18" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="23" />
+          <entry key="project.opened" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="60" />
-          <entry key="fxml" value="81" />
+          <entry key="fxml" value="82" />
           <entry key="java" value="4788" />
           <entry key="md" value="94" />
           <entry key="xml" value="38" />
@@ -115,7 +128,7 @@
           <entry key="JAVA" value="4788" />
           <entry key="Markdown" value="94" />
           <entry key="PLAIN_TEXT" value="60" />
-          <entry key="XML" value="119" />
+          <entry key="XML" value="120" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -174,7 +187,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/EditController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="686">
+            <state relative-caret-position="1275">
               <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="77" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -185,11 +198,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="771">
-              <caret line="248" column="1" lean-forward="true" selection-start-line="248" selection-start-column="1" selection-end-line="248" selection-end-column="1" />
+            <state relative-caret-position="839">
+              <caret line="191" column="46" selection-start-line="191" selection-start-column="46" selection-end-line="191" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -197,12 +210,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/ConfirmController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+            <state relative-caret-position="510">
+              <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#328#329#0" expanded="true" />
-                <element signature="e#358#359#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -220,12 +231,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/view/main.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="77" selection-start-line="24" selection-start-column="77" selection-end-line="24" selection-end-column="77" />
+            <state relative-caret-position="119">
+              <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -309,11 +320,11 @@
         <option value="$PROJECT_DIR$/src/com/generation/brain/phonebook/model/Main.java" />
         <option value="$PROJECT_DIR$/src/com/generation/brain/phonebook/objects/Person.java" />
         <option value="$PROJECT_DIR$/src/com/generation/brain/phonebook/controller/MainController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/view/main.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/model/Main.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/ConfirmController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/view/main.fxml" />
       </list>
     </option>
   </component>
@@ -375,6 +386,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -466,8 +479,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -610,6 +621,8 @@
       <workItem from="1574921187236" duration="925000" />
       <workItem from="1574922211453" duration="9629000" />
       <workItem from="1574931968014" duration="1132000" />
+      <workItem from="1575045783812" duration="182000" />
+      <workItem from="1575046043279" duration="52000" />
     </task>
     <servers />
   </component>
@@ -619,13 +632,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74429000" />
+    <option name="totallyTimeSpent" value="74663000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22547974" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.23027718" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -685,7 +698,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../../javafx-sdk-13.0.1/lib/javafx.controls.jar!/javafx/scene/control/TableView.class">
+    <entry file="jar://$PATH_TO_FX$/javafx.controls.jar!/javafx/scene/control/TableView.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="59" column="91" selection-start-line="59" selection-start-column="91" selection-end-line="59" selection-end-column="91" />
@@ -700,7 +713,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../../javafx-sdk-13.0.1/lib/javafx.fxml.jar!/javafx/fxml/FXMLLoader.class">
+    <entry file="jar://$PATH_TO_FX$/javafx.fxml.jar!/javafx/fxml/FXMLLoader.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="350" column="17" selection-start-line="350" selection-start-column="17" selection-end-line="350" selection-end-column="17" />
@@ -747,11 +760,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/view/main.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/EditController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="77" selection-start-line="24" selection-start-column="77" selection-end-line="24" selection-end-column="77" />
+        <state relative-caret-position="1275">
+          <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="77" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#717#718#0" expanded="true" />
+            <element signature="e#746#747#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/ConfirmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/InfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -779,44 +816,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/InfoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/EditController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="686">
-          <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="77" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#717#718#0" expanded="true" />
-            <element signature="e#746#747#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/ConfirmController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#328#329#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="771">
-          <caret line="248" column="1" lean-forward="true" selection-start-line="248" selection-start-column="1" selection-end-line="248" selection-end-column="1" />
+        <state relative-caret-position="839">
+          <caret line="191" column="46" selection-start-line="191" selection-start-column="46" selection-end-line="191" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/generation/brain/phonebook/view/main.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
         </state>
       </provider>
     </entry>

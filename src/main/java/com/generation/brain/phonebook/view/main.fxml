@@ -6,8 +6,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import org.controlsfx.control.textfield.CustomTextField?>
 
+<?import javafx.scene.control.TextField?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="420.0" minWidth="320.0" prefHeight="420.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.generation.brain.phonebook.controller.MainController">
    <children>
       <AnchorPane prefHeight="50.0">
@@ -21,7 +21,7 @@
       <AnchorPane>
          <children>
             <Button fx:id="btnSearch" layoutX="254.0" layoutY="11.0" mnemonicParsing="false" onAction="#searchButtonAction" prefWidth="52.0" text="Search" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="0.0" />
-            <CustomTextField fx:id="txtSearch" layoutX="37.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0" />
+            <TextField fx:id="txtSearch" layoutX="37.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0" />
             <Button fx:id="btnClear" mnemonicParsing="false" onAction="#clearButtonAction" prefWidth="52.0" text="Clear" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
