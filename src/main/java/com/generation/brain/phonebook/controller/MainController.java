@@ -46,8 +46,8 @@ public class MainController {
     @FXML
     private Label labelCount;
 
-    // The instance of our address book.
-    private CollectionPhoneBook phoneBook = new CollectionPhoneBook();
+    // Creating the phone book.
+    private CollectionPhoneBook phoneBook = CollectionPhoneBook.getPhoneBook();
 
     // Creating the backup list of our phoneBook.
     // It is necessary for temporary storage of the list of people at the time of the search.
@@ -71,20 +71,31 @@ public class MainController {
         // This will allow to select more than one person in the tablePhoneBook:
         // tablePhoneBook.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+        // Initializing the listeners.
+        initListeners();
+
+        // Fill in the phone book.
+        phoneBook.fillData();
+
+        // Fill in the test data.
+        phoneBook.fillTestData();
+
         // Automatically reading from the Person class of the getter, which corresponds to the variable name we specified,
         // writing the obtained value to the corresponding column of the table.
         columnName.setCellValueFactory(new PropertyValueFactory<Person, String>("name"));
         columnSurname.setCellValueFactory(new PropertyValueFactory<Person, String>("surname"));
         columnPhoneNumber.setCellValueFactory(new PropertyValueFactory<Person, String>("phoneNumber"));
 
-        // Adding a listener, that automatically updates the counter, if the list is updated.
-        phoneBook.getPersonList().addListener((ListChangeListener<Person>) change -> updateCountLabel());
-
-        // Remove after tests.
-        phoneBook.fillTestData();
-
         // Filling up the table in the GUI with data from the collection.
         tablePhoneBook.setItems(phoneBook.getPersonList());
+
+        // Initializing the editor window and its controller.
+        initEditor();
+    }
+
+    private void initListeners() {
+        // Adding a listener, that automatically updates the counter, if the list is updated.
+        phoneBook.getPersonList().addListener((ListChangeListener<Person>) change -> updateCountLabel());
 
         // Double click handler.
         tablePhoneBook.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -101,9 +112,6 @@ public class MainController {
                 }
             }
         });
-
-        // Initializing the editor window and its controller.
-        initEditor();
     }
 
     private void initEditor() throws IOException {
@@ -125,7 +133,6 @@ public class MainController {
     private void updateCountLabel() {
         labelCount.setText("Total contacts: " + phoneBook.getPersonList().size());
     }
-
 
     //----------------------------
 
@@ -173,9 +180,9 @@ public class MainController {
                 break;
             case "btnRemove":
                 if (confirm()) {
-                phoneBook.delete(selectedPerson);
-                backupList.remove(selectedPerson);
-                tablePhoneBook.refresh();
+                    phoneBook.delete(selectedPerson);
+                    backupList.remove(selectedPerson);
+                    tablePhoneBook.refresh();
                 }
                 break;
         }
@@ -199,15 +206,16 @@ public class MainController {
         }
     }
 
+    // The "Clear" button.
     public void clearButtonAction(ActionEvent actionEvent) {
 
-        if (!txtSearch.getText().equals("")) {
-            txtSearch.clear();
+        if (!txtSearch.getText().equals("") & !backupList.isEmpty()) {
             phoneBook.getPersonList().clear();
             phoneBook.getPersonList().addAll(backupList);
             backupList.clear();
         }
 
+        txtSearch.clear();
     }
 
     // Displays information about person.
