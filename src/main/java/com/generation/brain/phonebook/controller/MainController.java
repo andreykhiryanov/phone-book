@@ -78,7 +78,7 @@ public class MainController {
         phoneBook.fillData();
 
         // Fill in the test data.
-        phoneBook.fillTestData();
+//        phoneBook.fillTestData();
 
         // Automatically reading from the Person class of the getter, which corresponds to the variable name we specified,
         // writing the obtained value to the corresponding column of the table.
@@ -191,7 +191,12 @@ public class MainController {
     // The "Search" button.
     public void searchButtonAction (ActionEvent actionEvent) {
 
+        String temp = txtSearch.getText();
+        clearButtonAction(actionEvent);
+        txtSearch.setText(temp);
+
         if (!txtSearch.getText().equals("") & backupList.isEmpty()) {
+
             // Moving all people from the main list to the backup.
             backupList.addAll(phoneBook.getPersonList());
             phoneBook.getPersonList().clear();
@@ -216,6 +221,7 @@ public class MainController {
         }
 
         txtSearch.clear();
+
     }
 
     // Displays information about person.
